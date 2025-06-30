@@ -18,11 +18,11 @@ export default function Home() {
           <div className="w-full">
             <input id="user_name" className="input_field" type="text" placeholder="User Name" />
             <input id="user_password" className="input_field" type="password" placeholder="Password" />
-            <div class="button-wrap">
+            <div className="button-wrap">
               <button>
-                <span>Generate</span>
+                <span>Login</span>
               </button>
-              <div class="button-shadow"></div>
+              <div className="button-shadow"></div>
             </div>
           </div>
         
