@@ -9,23 +9,6 @@ body {
   color: #fff;
 }
 
-.theme_box{
-  width: 95%;
-  margin: 2rem auto;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px !important;
-}
-.theme_box::after{
-  content: '';
-  border-radius: 10px !important;
-}
-.theme_inner_box{
-  width: 90%;
-}
-
 /* login page */
 
 .logo {
