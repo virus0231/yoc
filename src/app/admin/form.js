@@ -142,7 +142,9 @@ export default function AddUserForm() {
             ))}
           </select>
         </div>
-        <button type="submit">Add User</button>
+        <button className="glass_btn" type="submit">
+          Add User
+        </button>
       </form>
       <table className="theme_box glass_layer user-table flex-col">
         <thead>
@@ -166,7 +168,11 @@ export default function AddUserForm() {
               <td>{user.status}</td>
               <td>{user.client}</td>
               <td>
-                <button type="button" onClick={() => handleEdit(user.id)}>
+                <button
+                  className="glass_btn"
+                  type="button"
+                  onClick={() => handleEdit(user.id)}
+                >
                   Edit
                 </button>
               </td>
