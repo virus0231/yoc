@@ -15,7 +15,7 @@ function page() {
             <p>From:</p>
             <input
                 id={"from_date"}
-                type="date"
+                type="text"
                 value={name}
                 onChange={(e)=>setName(e.target.value)}
                 className="border rounded p-2"
