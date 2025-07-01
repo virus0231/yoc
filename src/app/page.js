@@ -19,7 +19,7 @@ export default function Home() {
             <input id="user_name" className="input_field" type="text" placeholder="User Name" />
             <input id="user_password" className="input_field" type="password" placeholder="Password" />
             <div className="button-wrap">
-              <button>
+              <button className="glass_btn">
                 <span>Login</span>
               </button>
               <div className="button-shadow"></div>
