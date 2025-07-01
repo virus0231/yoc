@@ -11,9 +11,6 @@ body {
   margin: 0;
   color: #fff;
 }
-body::before {
-
-}
 
 .logo{
   font-size: 4rem;
@@ -90,9 +87,9 @@ body::before {
 }
 .selected_liquid_1{
   height: 100%;
-  width: 4rem;
+  width: 5.2rem;
   position: absolute;
-  transition: .5s ease;
+  transition: .2s ease;
   background: linear-gradient(
     -75deg,
     rgba(124, 226, 7, 0.3),
