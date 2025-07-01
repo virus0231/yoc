@@ -5,7 +5,7 @@ import { ChartLineMultiple } from "./income-chart";
 function Dashboard() {
   return (
     <Home>
-      <div>dashboard</div>
+      <div>dashboard shuja test</div>
       <div className="glass_layer theme_box">
         <ChartLineMultiple />
       </div>
