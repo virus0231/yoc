@@ -1,11 +1,13 @@
-import React from 'react'
-import Home from '../home/page'
+import React from "react";
+import Home from "../home/page";
+import AddUserForm from "./form";
+
 function page() {
   return (
     <Home>
-      <div>admin</div>
+      <AddUserForm />
     </Home>
-  )
+  );
 }
 
-export default page
+export default page;

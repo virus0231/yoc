@@ -1,0 +1,167 @@
+"use client";
+import { useState } from "react";
+import "../css/shuja.css";
+
+export default function AddUserForm() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    pass: "",
+    displayName: "",
+    userRole: "",
+    accessToClient: "",
+  });
+
+  const [users, setUsers] = useState([
+    // Example initial data
+    {
+      id: 1,
+      name: "John Doe",
+      email: "john@example.com",
+      role: "admin",
+      status: "active",
+      client: "Client A",
+    },
+    {
+      id: 2,
+      name: "Jane Smith",
+      email: "jane@example.com",
+      role: "user",
+      status: "inactive",
+      client: "Client B",
+    },
+  ]);
+
+  const clientOptions = ["Client A", "Client B", "Client C", "Client D"];
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newUser = {
+      id: users.length + 1,
+      name: form.name,
+      email: form.email,
+      role: form.userRole,
+      status: "active",
+      client: form.accessToClient,
+    };
+    setUsers((prev) => [...prev, newUser]);
+    setForm({
+      name: "",
+      email: "",
+      pass: "",
+      displayName: "",
+      userRole: "",
+      accessToClient: "",
+    });
+  };
+
+  const handleEdit = (id) => {
+    // Placeholder for edit logic
+    alert("Edit user with id: " + id);
+  };
+
+  return (
+    <div>
+      <form
+        onSubmit={handleSubmit}
+        className="add-user-form glass_layer theme_box"
+      >
+        <h2>Add User</h2>
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={form.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="pass"
+          placeholder="Password"
+          value={form.pass}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="displayName"
+          placeholder="Display Name"
+          value={form.displayName}
+          onChange={handleChange}
+        />
+        <select
+          name="userRole"
+          value={form.userRole}
+          onChange={handleChange}
+          required
+        >
+          <option value="">Select Role</option>
+          <option value="admin">Admin</option>
+          <option value="user">User</option>
+          <option value="manager">Manager</option>
+        </select>
+        <select
+          name="accessToClient"
+          value={form.accessToClient}
+          onChange={handleChange}
+          required
+        >
+          <option value="">Select Client</option>
+          {clientOptions.map((client) => (
+            <option key={client} value={client}>
+              {client}
+            </option>
+          ))}
+        </select>
+        <button type="submit">Add User</button>
+      </form>
+      <table className="user-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Client Access</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td>{user.id}</td>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.role}</td>
+              <td>{user.status}</td>
+              <td>{user.client}</td>
+              <td>
+                <button type="button" onClick={() => handleEdit(user.id)}>
+                  Edit
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
