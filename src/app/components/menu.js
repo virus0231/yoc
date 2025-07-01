@@ -1,16 +1,14 @@
-// components/Menu.js
-'use client';
-import React, { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setActiveIndex } from '../redux/activeIndexSlice';  // Import the action
-import Link from 'next/link';
-import { IoMdHome } from 'react-icons/io';
-import { MdAdminPanelSettings } from 'react-icons/md';
-import { BiSolidReport } from 'react-icons/bi';
-import { GrStorage } from 'react-icons/gr';
-import { LuCrown } from 'react-icons/lu';
+'use client'
+import React, { useRef, useState } from 'react'
+import Link from 'next/link'
+import { IoMdHome } from "react-icons/io";
+import { MdAdminPanelSettings } from "react-icons/md";
+import { BiSolidReport } from "react-icons/bi";
+import { GrStorage } from "react-icons/gr";
+import { LuCrown } from "react-icons/lu";
 
 function Menu() {
+
   const items = [
     { id: 1, icon: <IoMdHome />, href: '/home' },
     { id: 2, icon: <MdAdminPanelSettings />, href: '/admin' },
@@ -19,31 +17,50 @@ function Menu() {
     { id: 5, icon: <LuCrown />, href: '/donor' },
   ];
 
-  const dispatch = useDispatch();
-  const activeIndex = useSelector((state) => state.activeIndex.activeIndex); // Access activeIndex from Redux
-
+  const [activeIndex, setActiveIndex] = useState(0);
   const indicatorRef = useRef(null);
+  const indicatorRef2 = useRef(null);
 
   const handleClick = (e, index) => {
-    dispatch(setActiveIndex(index)); // Dispatch the action to update Redux state
+    setActiveIndex(index);
+
+    const items_length = items.length - 1;
 
     const target = e.currentTarget;
+
     if (indicatorRef.current && target) {
-      indicatorRef.current.style.left = target.offsetLeft + 'px';
-      indicatorRef.current.style.width = target.offsetWidth + 'px';
+      indicatorRef.current.style.left = target.offsetLeft + "px";     
     }
+
+    if(index == 0){
+      indicatorRef.current.style.width = "10rem";
+      indicatorRef.current.style.marginLeft = "-5rem";
+    }else if(items_length == index){
+      indicatorRef.current.style.width = "10rem";
+      indicatorRef.current.style.marginLeft = ".5rem";
+    }
+    else{
+      indicatorRef.current.style.width =  "5.2rem";
+      indicatorRef.current.style.marginLeft = "0rem";
+    }
+
   };
 
   return (
-    <div className="w-[100vw]">
-      <div className="menu_box glass_wrapper">
-        <div className="menu_bar glass_layer">
-          <div ref={indicatorRef} className="selected_liquid_1"></div>
-          <ul>
+    <div className='w-[100vw]'>
+      <div className='menu_box glass_wrapper'>
+        <div className='menu_bar glass_layer'>
+          <div ref={indicatorRef} className='selected_liquid_1'></div>
+          {/* <div ref={indicatorRef2} className='selected_liquid_2'></div> */}
+            <ul>
             {items.map((item, index) => {
               let extraClass = '';
-              if (index === activeIndex) {
-                extraClass = 'active'; // Apply active class to selected menu item
+              if (index === 0 && index === activeIndex) {
+                extraClass = 'first-active';
+              } else if (index === items.length - 1 && index === activeIndex) {
+                extraClass = 'last-active';
+              } else if (index === activeIndex) {
+                extraClass = 'active';
               }
 
               return (
@@ -63,7 +80,7 @@ function Menu() {
         <div className="glass_shadow"></div>
       </div>
     </div>
-  );
+  )
 }
 
 export default Menu;

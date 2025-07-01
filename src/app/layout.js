@@ -1,5 +1,3 @@
-import { Provider } from 'react-redux';
-import { store } from './redux/store';
 import "./css/button.css"
 import "./css/globals.css"
 import "./css/glass.css"
@@ -12,7 +10,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <Provider store={store}>
+    
       <html lang="en">
         <body
           className={``}
@@ -31,6 +29,6 @@ export default function RootLayout({ children }) {
 
         </body>
       </html>
-    </Provider>
+    
   );
 }
