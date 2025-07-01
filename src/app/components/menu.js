@@ -14,7 +14,7 @@ import { useRouter } from 'next/navigation';
 function Menu() {
 
   const items = [
-    { id: 1, icon: <IoMdHome />, href: '/home' },
+    { id: 1, icon: <IoMdHome />, href: '/dashboard' },
     { id: 2, icon: <MdAdminPanelSettings />, href: '/admin' },
     { id: 3, icon: <BiSolidReport />, href: '/reports' },
     { id: 4, icon: <GrStorage />, href: '/cause' },
@@ -50,7 +50,7 @@ function Menu() {
     dispatch(setActiveIndex(index));
     setTimeout(() => {
       router.push(href);
-    }, 800);
+    }, 200);
   };
 
   return (
