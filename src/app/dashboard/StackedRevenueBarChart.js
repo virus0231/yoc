@@ -21,8 +21,7 @@ import {
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const TIME_RANGES = ["Monthly", "Yearly", "Quarterly", "Daily", "Hourly"];
-
-const CLIENTS = ["MAUSA", "Freedom Bakeries", "Amoud", "All"];
+const CLIENTS = ["MAUSA", "Freedom Bakeries", "Amoud"];
 
 function generateMockData(timeframe) {
   let labels = [];
@@ -57,7 +56,6 @@ function generateMockData(timeframe) {
       ];
   }
 
-  // Each client is its own dataset in the stack
   const datasets = CLIENTS.map((client) => ({
     label: client,
     data: labels.map(() => Math.floor(Math.random() * 5000 + 1000)),
@@ -78,11 +76,11 @@ function randomColor(opacity = 1) {
 
 export default function StackedRevenueBarChart() {
   const [timeframe, setTimeframe] = useState("Monthly");
-
   const chartData = useMemo(() => generateMockData(timeframe), [timeframe]);
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         labels: { color: "#fff" },
@@ -107,11 +105,12 @@ export default function StackedRevenueBarChart() {
   };
 
   return (
-    <div className="theme_box relative overflow-hidden backdrop-blur-lg bg-black/30 border border-white/20">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="logo text-2xl">Stacked Revenue Comparison</h2>
+    <div className="w-full space-y-4">
+      <div className="theme_box w-full overflow-hidden backdrop-blur-lg bg-black/30 border border-white/20 flex flex-col items-center px-4 py-6">
+        <h2 className="logo text-xs text-center mb-4">Revenue Comparison</h2>
+
         <Select value={timeframe} onValueChange={setTimeframe}>
-          <SelectTrigger className="input_field w-[160px]">
+          <SelectTrigger className="input_field w-[180px] mb-6">
             <SelectValue placeholder="Select timeframe" />
           </SelectTrigger>
           <SelectContent className="bg-black/80 border border-white/20 text-white">
@@ -122,9 +121,10 @@ export default function StackedRevenueBarChart() {
             ))}
           </SelectContent>
         </Select>
-      </div>
-      <div className="w-full h-[400px]">
-        <Bar data={chartData} options={options} />
+
+        <div className="relative w-full h-[300px]">
+          <Bar data={chartData} options={options} />
+        </div>
       </div>
     </div>
   );
