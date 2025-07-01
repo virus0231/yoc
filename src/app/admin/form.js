@@ -75,64 +75,76 @@ export default function AddUserForm() {
         className="add-user-form glass_layer theme_box"
       >
         <h2>Add User</h2>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="pass"
-          placeholder="Password"
-          value={form.pass}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="displayName"
-          placeholder="Display Name"
-          value={form.displayName}
-          onChange={handleChange}
-        />
-        <select
-          name="userRole"
-          value={form.userRole}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Role</option>
-          <option value="admin">Admin</option>
-          <option value="user">User</option>
-          <option value="manager">Manager</option>
-        </select>
-        <select
-          name="accessToClient"
-          value={form.accessToClient}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Client</option>
-          {clientOptions.map((client) => (
-            <option key={client} value={client}>
-              {client}
-            </option>
-          ))}
-        </select>
+        <div className="add-user-form-row">
+          <input
+            type="text"
+            name="name"
+            className="glass_layer"
+            placeholder="Name"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            className="glass_layer"
+            placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="add-user-form-row">
+          <input
+            type="password"
+            className="glass_layer"
+            name="pass"
+            placeholder="Password"
+            value={form.pass}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            className="glass_layer"
+            name="displayName"
+            placeholder="Display Name"
+            value={form.displayName}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="add-user-form-row">
+          <select
+            name="userRole"
+            className="glass_layer"
+            value={form.userRole}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Role</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+            <option value="manager">Manager</option>
+          </select>
+          <select
+            name="accessToClient"
+            value={form.accessToClient}
+            onChange={handleChange}
+            className="glass_layer"
+            required
+          >
+            <option value="">Select Client</option>
+            {clientOptions.map((client) => (
+              <option key={client} value={client}>
+                {client}
+              </option>
+            ))}
+          </select>
+        </div>
         <button type="submit">Add User</button>
       </form>
-      <table className="user-table">
+      <table className="theme_box glass_layer user-table flex-col">
         <thead>
           <tr>
             <th>ID</th>
