@@ -1,16 +1,13 @@
-import React from "react";
-import Home from "../home/page";
-import { ChartLineMultiple } from "./income-chart";
+"use client";
 
-function Dashboard() {
+import LineRevenueChart from "./LineRevenueChart";
+
+export default function DashboardPage() {
   return (
-    <Home>
-      <div>dashboard shuja test</div>
-      <div className="glass_layer theme_box">
-        <ChartLineMultiple />
+    <main className="min-h-screen px-4 py-6 bg-black text-white">
+      <div className="max-w-7xl mx-auto space-y-6">
+        <LineRevenueChart />
       </div>
-    </Home>
+    </main>
   );
 }
-
-export default Dashboard;
