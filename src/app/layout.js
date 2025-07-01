@@ -1,7 +1,8 @@
-import "./css/button.css"
-import "./css/globals.css"
-import "./css/glass.css"
-import "./css/style.scss"
+import "./css/button.css";
+import "./css/globals.css";
+import "./css/layout.css";
+import "./css/glass.css";
+import "./css/style.scss";
 
 export const metadata = {
   title: "BackOffice",
@@ -10,25 +11,36 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    
-      <html lang="en">
-        <body
-          className={``}
-        >
-          {children}
-
+    <html lang="en">
+      <body className={``}>
+        {children}
 
         {/* Glass Blur Effect */}
-        <svg xmlns="http://www.w3.org/2000/svg" style={{display: "none"}}>
-          <filter id="glass-blur" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox">
-            <feTurbulence type="fractalNoise" baseFrequency="0.003 0.007" numOctaves="1" result="turbulence" />
-            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="200" xChannelSelector="R" yChannelSelector="G" />
+        <svg xmlns="http://www.w3.org/2000/svg" style={{ display: "none" }}>
+          <filter
+            id="glass-blur"
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+            filterUnits="objectBoundingBox"
+          >
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.003 0.007"
+              numOctaves="1"
+              result="turbulence"
+            />
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="turbulence"
+              scale="200"
+              xChannelSelector="R"
+              yChannelSelector="G"
+            />
           </filter>
         </svg>
-
-
-        </body>
-      </html>
-    
+      </body>
+    </html>
   );
 }
