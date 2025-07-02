@@ -94,8 +94,6 @@ export default function AddUserForm() {
             onChange={handleChange}
             required
           />
-        </div>
-        <div className="add-user-form-row">
           <input
             type="password"
             className="glass_layer"
@@ -113,8 +111,6 @@ export default function AddUserForm() {
             value={form.displayName}
             onChange={handleChange}
           />
-        </div>
-        <div className="add-user-form-row">
           <select
             name="userRole"
             className="glass_layer"
@@ -142,9 +138,11 @@ export default function AddUserForm() {
             ))}
           </select>
         </div>
-        <button className="glass_btn" type="submit">
-          Add User
-        </button>
+        <div className="add-user-form-btn-row">
+          <button className="glass_btn" type="submit">
+            Add User
+          </button>
+        </div>
       </form>
       <table className="theme_box glass_layer user-table flex-col">
         <thead>
@@ -161,13 +159,13 @@ export default function AddUserForm() {
         <tbody>
           {users.map((user) => (
             <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.role}</td>
-              <td>{user.status}</td>
-              <td>{user.client}</td>
-              <td>
+              <td data-label="ID">{user.id}</td>
+              <td data-label="Name">{user.name}</td>
+              <td data-label="Email">{user.email}</td>
+              <td data-label="Role">{user.role}</td>
+              <td data-label="Status">{user.status}</td>
+              <td data-label="Client Access">{user.client}</td>
+              <td data-label="Action">
                 <button
                   className="glass_btn"
                   type="button"
