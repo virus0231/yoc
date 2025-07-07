@@ -8,22 +8,23 @@ const GCButton = ({
   disabled = false,
   type = "button",
   className = "",
+  ...rest
 }) => {
   const baseClasses = `
-    relative overflow-hidden rounded-xl backdrop-blur-md border border-white/20
-    transition-all duration-300 ease-in-out font-medium
-    focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-transparent
+    relative overflow-hidden rounded-2xl backdrop-blur-xl border border-white/30
+    transition-all duration-300 ease-in-out font-semibold
+    focus:outline-none focus:ring-2 focus:ring-[#a5b4fc]/40 focus:ring-offset-2 focus:ring-offset-transparent
     disabled:opacity-50 disabled:cursor-not-allowed
-    hover:scale-105 hover:shadow-lg active:scale-95
+    hover:scale-105 hover:shadow-2xl active:scale-95
   `;
 
   const variantClasses = {
     primary:
-      "bg-gradient-to-r from-[#62bd72]/20 to-[#39bbec]/20 hover:from-[#62bd72]/30 hover:to-[#39bbec]/30 text-white shadow-lg shadow-[#39bbec]/20",
+      "bg-gradient-to-br from-[#a5b4fc]/70 via-[#6ee7b7]/60 to-[#f0fdf4]/80 text-[#312e81] shadow-xl shadow-[#a5b4fc]/20 hover:from-[#6366f1]/80 hover:to-[#6ee7b7]/80 hover:text-[#1e293b]",
     secondary:
-      "bg-white/10 hover:bg-gradient-to-r hover:from-[#aa5ea4]/20 hover:to-white/20 text-gray-800 shadow-lg shadow-black/10",
+      "bg-white/30 backdrop-blur-lg border border-[#c7d2fe]/40 text-[#312e81] shadow-md shadow-[#a5b4fc]/10 hover:bg-white/50 hover:text-[#6366f1]",
     danger:
-      "bg-red-500/20 hover:bg-red-500/30 text-white shadow-lg shadow-red-500/20",
+      "bg-gradient-to-br from-[#fee2e2]/80 to-[#fca5a5]/80 text-[#991b1b] shadow-lg shadow-[#fca5a5]/20 hover:from-[#f87171]/80 hover:to-[#fee2e2]/80 hover:text-[#7f1d1d]",
   };
 
   const sizeClasses = {
@@ -38,9 +39,13 @@ const GCButton = ({
       onClick={onClick}
       disabled={disabled}
       className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
+      {...rest}
     >
-      <span className="relative z-10">{children}</span>
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+      <span className="relative z-10 drop-shadow-sm">{children}</span>
+      <div className="absolute inset-0 rounded-2xl pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-1/2 bg-white/30 blur-md opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 opacity-80" />
+      </div>
     </button>
   );
 };

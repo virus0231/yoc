@@ -13,10 +13,10 @@ const GCCard = ({
   return (
     <div
       className={`
-        rounded-xl backdrop-blur-md bg-white/10 border border-white/20 
-        shadow-lg shadow-black/5 transition-all duration-300 ease-in-out
+        rounded-3xl backdrop-blur-2xl bg-gradient-to-br from-[#f8fafc]/90 via-[#e0e7ff]/80 to-[#f0fdf4]/90
+        border border-[#c7d2fe]/40 shadow-2xl shadow-[#a5b4fc]/10 transition-all duration-300 ease-in-out
         ${paddingClasses[padding]}
-        ${hover ? "hover:bg-white/20 hover:shadow-xl hover:scale-105" : ""}
+        ${hover ? "hover:bg-[#e0e7ff]/80 hover:shadow-2xl hover:scale-105" : ""}
         ${className}
       `}
     >
