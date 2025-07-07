@@ -11,7 +11,7 @@ function page() {
       <div className='theme_box donor_box glass_layer h-fit'>
 
         <div className='items_holder theme_inner_box'>
-
+    
           <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-4 gap-y-8'>
             <div>
               <p>Start Date:</p>
