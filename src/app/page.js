@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { loginSchema } from "@/schemas/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { GCButton, GCCard, GCPasswordField, GCTextField } from "@/components";
+import { loginUser } from "@/api/auth";
 
 export default function Home() {
   const {
@@ -13,10 +14,20 @@ export default function Home() {
     formState: { errors },
   } = useForm({ resolver: zodResolver(loginSchema) });
 
+  const checkCredentials = async (data) => {
+    const response = await loginUser(data);
+
+    if (response.success) {
+      window.location.href = "/dashboard";
+    } else {
+      alert(response.message || "Login failed");
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#f0f4ff]/80 via-[#e0f7fa]/70 to-[#f0fdf4]/90 p-4">
       <form
-        onSubmit={handleSubmit((data) => console.log(data))}
+        onSubmit={handleSubmit((data) => checkCredentials(data))}
         className="w-full max-w-md"
       >
         <GCCard className="relative p-12 rounded-3xl shadow-2xl backdrop-blur-2xl border border-[#c7d2fe]/40 overflow-hidden">
@@ -40,25 +51,29 @@ export default function Home() {
           <div className="space-y-6 relative z-10">
             <div>
               <GCTextField
-                name="user_name"
+                name="username_val"
                 control={control}
                 placeholder="User Name"
                 className="rounded-2xl bg-[#f8fafc]/90 focus:bg-white/100 border border-[#c7d2fe] shadow-md px-5 py-4 text-lg transition-all duration-200 focus:ring-2 focus:ring-[#a5b4fc]/40 text-[#312e81]"
               />
-              {errors.user_name && (
-                <p className="text-xs text-red-500 mt-1 ml-1">{errors.user_name.message}</p>
+              {errors.username_val && (
+                <p className="text-xs text-red-500 mt-1 ml-1">
+                  {errors.username_val.message}
+                </p>
               )}
             </div>
 
             <div>
               <GCPasswordField
                 control={control}
-                name="user_password"
+                name="password_val"
                 placeholder="Password"
                 className="rounded-2xl bg-[#f8fafc]/90 focus:bg-white/100 border border-[#c7d2fe] shadow-md px-5 py-4 text-lg transition-all duration-200 focus:ring-2 focus:ring-[#6ee7b7]/40 text-[#312e81]"
               />
-              {errors.user_password && (
-                <p className="text-xs text-red-500 mt-1 ml-1">{errors.user_password.message}</p>
+              {errors.password_val && (
+                <p className="text-xs text-red-500 mt-1 ml-1">
+                  {errors.password_val.message}
+                </p>
               )}
             </div>
 

@@ -14,8 +14,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={``}>
         {children}
-
-        {/* Glass Blur Effect */}
         <svg xmlns="http://www.w3.org/2000/svg" style={{ display: "none" }}>
           <filter
             id="glass-blur"

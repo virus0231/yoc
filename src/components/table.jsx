@@ -1,23 +1,27 @@
 const GCTable = ({ headers, rows, className = "" }) => {
   return (
     <div
-      className={`overflow-hidden rounded-xl backdrop-blur-md bg-white/10 border border-white/20 shadow-lg shadow-black/5 ${className}`}
+      className={`overflow-hidden rounded-2xl bg-gradient-to-br from-[#23272f]/80 via-[#18181b]/80 to-[#0f172a]/90 border border-[#334155]/60 shadow-2xl backdrop-blur-xl ${className} relative`}
     >
-      <div className="overflow-x-auto">
+      {/* Glassmorphism overlays */}
+      <div className="absolute inset-0 bg-white/10 rounded-2xl pointer-events-none backdrop-blur-[6px] z-0" />
+      <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-white/20 rounded-full blur-2xl opacity-20 z-0" />
+      <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-[#a5b4fc]/20 rounded-full blur-2xl opacity-10 z-0" />
+      <div className="overflow-x-auto relative z-10">
         <table className="w-full">
-          <thead className="bg-white/20">
+          <thead className="bg-white/10">
             <tr>
               {headers.map((header, index) => (
                 <th
                   key={index}
-                  className="px-6 py-4 text-left text-sm font-semibold text-gray-800 uppercase tracking-wider"
+                  className="px-6 py-4 text-left text-sm font-semibold text-[#a5b4fc] uppercase tracking-wider backdrop-blur-md"
                 >
                   {header}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/20">
+          <tbody className="divide-y divide-white/10">
             {rows.map((row, rowIndex) => (
               <tr
                 key={rowIndex}
@@ -26,7 +30,7 @@ const GCTable = ({ headers, rows, className = "" }) => {
                 {row.map((cell, cellIndex) => (
                   <td
                     key={cellIndex}
-                    className="px-6 py-4 whitespace-nowrap text-sm text-gray-800"
+                    className="px-6 py-4 whitespace-nowrap text-sm text-[#e0e7ff] backdrop-blur-sm"
                   >
                     {cell}
                   </td>
@@ -37,7 +41,7 @@ const GCTable = ({ headers, rows, className = "" }) => {
         </table>
       </div>
       {rows.length === 0 && (
-        <div className="px-6 py-8 text-center text-gray-500">
+        <div className="px-6 py-8 text-center text-[#a5b4fc] relative z-10">
           No data available
         </div>
       )}
