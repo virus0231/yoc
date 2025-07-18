@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const base = `${import.meta.env.VITE_API_BASE_URL}`;
+const base = `${process.env.API_BASE_URL}`;
 
 export const loginUser = async (credentials) => {
   try {
